@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const fcsv = require("@fast-csv/parse");
 
-const datasetDir = "./dataset";
-const outputFile = "../names.json";
+const datasetDir = "./generator/Names";
+const outputFile = "./static/names.json";
 
 const main = async () => {
   const files = await fs.promises.readdir(datasetDir);
