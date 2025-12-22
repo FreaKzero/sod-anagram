@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <title>testing</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shadows of Doubt - Anagram Solver</title>
+    <link rel="stylesheet" href="./static/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="content">
+      <div class="logo">
+        <h1>shadows</h1>
+        <h2>of doubt</h2>
+        <h3>Anagram Solver</h3>
+      </div>
 
-</head>
-<body>
- <label for="input">Input:</label>
-<input type="text" id="input" name="input" required value="IWHJKREAT" /><br />
-<button type="button" id="btn">Solve</button>
+      <div class="ui-input">
+        <h3>Lets solve</h3>
+        <input
+        autocomplete="off"
+          type="text"
+          id="input"
+          name="input"
+          required
+          value=""
+          placeholder="Enter Anagram"
+        /><br />
+        <button type="button" id="solve">Solve</button>
 
-<div id="output"> 
-</div>
+        <div id="output"></div>
 
-</body>
+      </div>
+    </div>
+  </body>
   <script src="./static/anagram.js"></script>
-
 </html>

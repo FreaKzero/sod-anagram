@@ -1,4 +1,12 @@
-(function () {
+(async function () {
+  const loadnames = async () => {
+    const x = await fetch("./static/names.json");
+    const words = await x.json();
+    return words;
+  }
+
+  window.WORDS = await loadnames();
+
   const $ = (sel) => {
     const x = document.querySelectorAll(sel);
     return x.length === 0 ? null : x.length === 1 ? x[0] : x;
@@ -40,22 +48,38 @@
       if (initial) return initial.toUpperCase() + "." + match;
       return match;
     }
-
-  $("#btn").addEventListener("click", async () => {
-    const x = await fetch("./static/names.json");
-    const words = await x.json();
-
+  
+  const doSolve = () => {
     const input = $("#input").value;
     
     if (input) {
-      const matches = findFuzzyAnagrams(input, words, 1).map((word) =>
+      const m = findFuzzyAnagrams(input, window.WORDS, 1).map((word) =>
         reconstructOriginal(input, word)
       );
+
+      const matches = [...new Set(m)];
 
       if (matches) {
         const output = `<ul id="list">${matches.map(item => `<li>${item}</li>`).join('\n')}</ul>`;
         $('#output').innerHTML = output;
       }
     }
+  }
+
+  $('#input').addEventListener('keyup', (ev) => {
+    if ($('#input').value.length > 0) {
+      $('#solve').style.display = 'inline-block';
+    } else {
+      $('#output').innerHTML = '';
+      $('#solve').style.display = 'none';
+    }
+
+      if (ev.key === 'Enter') {
+        doSolve();
+      } 
+  });
+
+  $("#solve").addEventListener("click", async () => {
+    doSolve();
   });
 })();
