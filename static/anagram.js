@@ -57,7 +57,7 @@
         reconstructOriginal(input, word)
       );
 
-      const matches = [...new Set(m)];
+      const matches = [...new Set(m.filter(a => a.includes('.')))];
 
       if (matches) {
         const output = `<ul id="list">${matches.map(item => `<li>${item}</li>`).join('\n')}</ul>`;
