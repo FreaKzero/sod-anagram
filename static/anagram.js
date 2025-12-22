@@ -42,7 +42,7 @@
     }
 
   $("#btn").addEventListener("click", async () => {
-    const x = await fetch("names.json");
+    const x = await fetch("./static/names.json");
     const words = await x.json();
 
     const input = $("#input").value;
