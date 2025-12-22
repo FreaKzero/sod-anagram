@@ -1,4 +1,4 @@
-# Shadow of Doubt - Anagram Solver
+# Shadows of Doubt - Anagram Solver
 Very little Webapp for solving of the Citizen Anagrams in Shadow of Doubt
 
 ![play a game](readme/screen.png)
