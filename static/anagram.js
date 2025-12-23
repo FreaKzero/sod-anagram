@@ -1,16 +1,17 @@
 (async function () {
+    const $ = (sel) => {
+    const x = document.querySelectorAll(sel);
+    return x.length === 0 ? null : x.length === 1 ? x[0] : x;
+  };
+
   const loadnames = async () => {
     const x = await fetch("./static/names.json");
     const words = await x.json();
     return words;
   }
 
+  //$('#input').focus();
   window.WORDS = await loadnames();
-
-  const $ = (sel) => {
-    const x = document.querySelectorAll(sel);
-    return x.length === 0 ? null : x.length === 1 ? x[0] : x;
-  };
 
    function charCount(str) {
       const counts = Array(26).fill(0);
@@ -59,9 +60,11 @@
 
       const matches = [...new Set(m.filter(a => a.includes('.')))];
 
-      if (matches) {
+      if (matches && matches.length > 0) {
         const output = `<ul id="list">${matches.map(item => `<li>${item}</li>`).join('\n')}</ul>`;
         $('#output').innerHTML = output;
+      } else {
+        $('#output').innerHTML = '<ul id="list"><li class="red">Not able to solve Anagram</li><li class="red">Is the Input correct ?</li></ul>';
       }
     }
   }
