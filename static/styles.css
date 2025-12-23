@@ -163,7 +163,7 @@ button {
 }
 
 ul li {
-    animation: fadeIn 1.2s ease-in forwards;
+    animation: fadeIn 0.5s ease-in forwards;
     animation-fill-mode: both;
     opacity: 0;
 }
