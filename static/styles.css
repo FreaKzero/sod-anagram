@@ -54,11 +54,19 @@ button {
 }
 
 .logo>h3 {
-    margin: 1.5em 0 0.5em 0;
+    margin: 1em 0 0 0;
     font-size: 1.15em;
     font-weight: 800;
     letter-spacing: 0.1ch;
 }
+
+.logo>h4 {
+    margin: 0 0 1.5em 0;
+    font-size: 0.8em;
+    font-weight: 800;
+    letter-spacing: 0.5ch;
+}
+
 
 input {
     all: unset;

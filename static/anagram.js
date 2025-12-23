@@ -6,8 +6,9 @@
 
   const loadnames = async () => {
     const x = await fetch("./static/names.json");
-    const words = await x.json();
-    return words;
+    const json = await x.json();
+    $('.version').innerHTML = json.version;
+    return json.names;
   }
 
   $('#input').focus();

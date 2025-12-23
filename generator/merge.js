@@ -5,7 +5,7 @@ const readline = require("readline");
 const datasetDir = "./generator/Names";
 const outputFile = "./static/names.json";
 
-const main = async () => {
+const main = async (ver) => {
   const files = await fs.promises.readdir(datasetDir);
   const names = [];
 
@@ -27,8 +27,18 @@ const main = async () => {
     }
   }
 
-  fs.writeFileSync(outputFile, JSON.stringify(names, null, 2), "utf8");
+  fs.writeFileSync(outputFile, JSON.stringify({
+    version: ver,
+    names: names
+  }, null, 2), "utf8");
   console.log(`Done! ${names.length} names saved to ${outputFile}`);
 };
 
-main().catch(console.error);
+const ver = process.argv[2];
+
+if (!ver) {
+  console.log('Please speficy a Version');
+  return;
+}
+
+main(ver).catch(console.error);
