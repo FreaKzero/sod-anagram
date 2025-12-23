@@ -1,5 +1,5 @@
 # Shadows of Doubt - Anagram Solver
-Very little Webapp for solving of the Citizen Anagrams in Shadow of Doubt
+Very little Webapp for solving the Citizen Anagrams in Shadow of Doubt
 
 ![play a game](readme/screen.png)
 
@@ -14,6 +14,3 @@ run `node ./generator/merge.js` from root directory
 ```
 node server.js
 ```
-
-## Todo
-remove csv dependency

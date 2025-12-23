@@ -1,7 +1,21 @@
-import http from 'http'
-import fs from 'fs'
-import path from 'path'
-import crypto from 'crypto'
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+const { spawn } = require('child_process');
+const os = require('os');
+
+function openBrowser(url) {
+  const platform = os.platform();
+
+  if (platform === 'win32') {
+    spawn('cmd', ['/c', 'start', '', url]);
+  } else if (platform === 'darwin') {
+    spawn('open', [url]);
+  } else {
+    spawn('xdg-open', [url]);
+  }
+}
 
 const ROOT = path.resolve('./')
 const PORT = 3000
@@ -148,5 +162,6 @@ function injectLiveReload(html) {
 }
 
 server.listen(PORT, () => {
-  console.log(`🚀 Dev server running at http://localhost:${PORT}`)
+  console.log(`🚀 Dev server running at http://localhost:${PORT}`);
+  openBrowser(`http://localhost:${PORT}`);
 })

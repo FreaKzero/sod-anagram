@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const fcsv = require("@fast-csv/parse");
+const readline = require("readline");
 
 const datasetDir = "./generator/Names";
 const outputFile = "./static/names.json";
@@ -12,15 +12,19 @@ const main = async () => {
   for (const file of files) {
     const filePath = path.join(datasetDir, file);
 
-    await new Promise((resolve, reject) => {
-      fs.createReadStream(filePath)
-        .pipe(fcsv.parse({ headers: false, skipRows: 3 }))
-        .on("data", (row) => {
-          if (row[0]) names.push(row[0]);
-        })
-        .on("end", resolve)
-        .on("error", reject);
+    const rl = readline.createInterface({
+      input: fs.createReadStream(filePath),
+      crlfDelay: Infinity
     });
+
+    let skip = 3;
+    for await (const line of rl) {
+      if (skip-- > 0) continue;
+      if (!line.trim()) continue;
+
+      const name = line.split(',')[0].replace(/"/g, '');
+      if (name) names.push(name);
+    }
   }
 
   fs.writeFileSync(outputFile, JSON.stringify(names, null, 2), "utf8");
