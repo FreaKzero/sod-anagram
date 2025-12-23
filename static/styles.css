@@ -40,7 +40,8 @@ button {
     font-weight: 800;
     letter-spacing: 0.1ch;
     margin: 0;
-    text-shadow: 0px 0px 10px var(--logored), 0px 0px 10px var(--logored), 0px 0px 10px var(--logored);
+    animation: flicker 1.5s infinite alternate;     
+
 }
 
 .logo>h2 {
@@ -48,16 +49,15 @@ button {
     font-weight: 800;
     letter-spacing: 0.1ch;
     margin: 0;
-    text-shadow: 0px 0px 10px var(--logored), 0px 0px 10px var(--logored), 0px 0px 10px var(--logored);
+    animation: flicker 1.5s infinite alternate;     
+   
 }
 
 .logo>h3 {
-    margin: 15px 0 1em 0;
-    font-size: 1.5em;
+    margin: 1.5em 0 0.5em 0;
+    font-size: 1.15em;
     font-weight: 800;
     letter-spacing: 0.1ch;
-    text-shadow: 0px 0px 10px var(--orange), 0px 0px 10px var(--orange), 0px 0px 10px var(--orange);
-
 }
 
 input {
@@ -220,16 +220,6 @@ ul li:nth-child(8) {
     animation-delay: 2s
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 .octo-body {
     fill: var(--darkblue);
 }
@@ -240,4 +230,33 @@ ul li:nth-child(8) {
 
 .red {
     color: red !important;
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      
+        text-shadow:
+            -0.2rem -0.2rem 1rem #ff4949,
+            0.2rem 0.2rem 1rem #ff4949,
+            0 0 2rem var(--logored),
+            0 0 4rem var(--logored),
+            0 0 6rem var(--logored),
+            0 0 8rem var(--logored)
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
 }
