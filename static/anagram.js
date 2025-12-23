@@ -10,7 +10,8 @@
     return words;
   }
 
-  //$('#input').focus();
+  $('#input').focus();
+  
   window.WORDS = await loadnames();
 
    function charCount(str) {
