@@ -72,10 +72,10 @@
 
   $('#input').addEventListener('keyup', (ev) => {
     if ($('#input').value.length > 0) {
-      $('#solve').style.display = 'inline-block';
+      $('.buttonContainer').style.display = 'inline-block';
     } else {
       $('#output').innerHTML = '';
-      $('#solve').style.display = 'none';
+      $('.buttonContainer').style.display = 'none';
     }
 
       if (ev.key === 'Enter') {
@@ -86,4 +86,13 @@
   $("#solve").addEventListener("click", async () => {
     doSolve();
   });
+
+   $("#reset").addEventListener("click", async () => {
+    $('#input').value = '';
+    $('.buttonContainer').style.display = 'none';
+    $('#output').innerHTML = '';
+    $('#input').focus();
+  
+  });
+
 })();
